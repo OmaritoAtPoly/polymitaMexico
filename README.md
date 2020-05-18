@@ -25,7 +25,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## `Create a local .env file`
 To run correctly this app, it's mandatory to create a .env file with local variables like
-### 1- REACT_APP_SECRECT = "qwertyuiop"
+### 1- REACT_APP_SECRET=qwertyuiop
 ### 2- REACT_APP_API=https://api.github.com/repositories/19438/issues 
 
 once you create this file with those variables inside, you must restart the whole app, to take efects over the code
