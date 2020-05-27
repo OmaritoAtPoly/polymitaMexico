@@ -1,18 +1,23 @@
-import React from 'react';
-import { useQuery } from 'react-fetching-library';
-import UsersList from '../components/UserList';
-import { fetchUsersList } from '../helpers/fetchUserList';
+import camelcaseKeys from "camelcase-keys";
+import React, { useMemo } from "react";
+import ListLayout from "../components/ListLayout";
+import User from "../components/User";
+import { dataApi } from "../dataApi";
+import { User as UserType } from "../typings";
 
 const Users = () => {
+  const dataPrepared = useMemo<UserType[]>(
+    () => dataApi.data.map((item) => camelcaseKeys(item)) as any,
+    []
+  );
 
-        const { loading, payload, error, query } = useQuery(fetchUsersList);
-
-        if (loading) return <div>loading...</div>
-        if (error) return <div>Error on {error}</div>
-
-        const { data: users } = payload;
-        return users.map((u: any) => <UsersList key={u.id} users={u} />);
+  return (
+    <ListLayout>
+      {dataPrepared.map((data) => (
+        <User {...data} />
+      ))}
+    </ListLayout>
+  );
 };
-
 
 export default Users;
