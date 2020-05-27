@@ -33,8 +33,9 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
                     .max(20, 'Must be 20 characters or less')
                     .required('This filed is required'),
             })}
-            onSubmit={(values) => {
+            onSubmit={(values, actions) => {
                 handleSubmit(values)
+                actions.resetForm()
             }}
         >
             {({ handleChange, handleBlur, values }) => (
