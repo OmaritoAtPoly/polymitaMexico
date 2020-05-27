@@ -1,7 +1,8 @@
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, ErrorMessage } from 'formik';
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Button, TextField, Typography } from '@material-ui/core';
+import * as Yup from 'yup';
 
 export type UserInput = {
     name: string;
@@ -24,13 +25,20 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
     return (
         <Formik
             initialValues={initialValues}
+            validationSchema={Yup.object({
+                name: Yup.string()
+                    .max(15, 'Must be 15 characters or less')
+                    .required('This filed is required'),
+                job: Yup.string()
+                    .max(20, 'Must be 20 characters or less')
+                    .required('This filed is required'),
+            })}
             onSubmit={(values) => {
                 handleSubmit(values)
             }}
         >
             {({ handleChange, handleBlur, values }) => (
                 <Form className={classes.container} >
-
                     <Typography className={classes.title} variant="h4" gutterBottom>
                         Create User
                     </Typography>
@@ -44,6 +52,7 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
                             onBlur={handleBlur('name')}
                             value={values.name}
                         />
+                        <ErrorMessage name="name" />
                     </div>
                     <div className={classes.form_group} >
                         <TextField
@@ -55,6 +64,7 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
                             onBlur={handleBlur('job')}
                             value={values.job}
                         />
+                        <ErrorMessage name="job" />
                     </div>
                     <div className={classes.submit}  >
                         <Button disabled={loading} type='submit' variant="contained" size='small' color="primary">
@@ -84,7 +94,9 @@ const useStyles = makeStyles({
     },
     form_group: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
+
         width: 'inherit',
         margin: '.5rem'
     },

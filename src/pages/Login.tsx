@@ -3,6 +3,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../components/Button";
 import Text from "../components/Text";
+import { AddUserForm } from "../AddUserForm";
 
 interface Props {
   onClick: (user: string, password: string) => void;
@@ -31,7 +32,6 @@ const Login = () => {
         typeVariant={"primary"}
         onClick={handleLogin}
       />
-
     </div>
   );
 };
