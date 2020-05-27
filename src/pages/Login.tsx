@@ -17,7 +17,7 @@ const Login = () => {
   const { push } = useHistory();
   
   const handleLogin = () => {
-    push('/');
+    push('/users');
   }
 
   
