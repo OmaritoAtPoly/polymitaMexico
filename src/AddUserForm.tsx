@@ -43,7 +43,7 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
                     <Typography className={classes.title} variant="h4" gutterBottom>
                         Create User
                     </Typography>
-                    <div className={classes.form_group} >
+                    <div className={classes.formGroup} >
                         <TextField
                             className={classes.input}
                             variant='outlined'
@@ -55,7 +55,7 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
                         />
                         <ErrorMessage name="name" />
                     </div>
-                    <div className={classes.form_group} >
+                    <div className={classes.formGroup} >
                         <TextField
                             className={classes.input}
                             variant='outlined'
@@ -93,7 +93,7 @@ const useStyles = makeStyles({
     input: {
         width: '100%',
     },
-    form_group: {
+    formGroup: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
