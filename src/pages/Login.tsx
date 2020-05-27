@@ -1,11 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../components/Button";
-import Input from "../components/Input";
 import Text from "../components/Text";
-import { isLogged } from "../services/Auth";
-import Alert from "../components/Alert";
 
 interface Props {
   onClick: (user: string, password: string) => void;
@@ -15,17 +12,17 @@ interface Props {
 const Login = () => {
   const classes = useStyles();
   const { push } = useHistory();
-  
+
   const handleLogin = () => {
     push('/users');
   }
 
-  
+
   return (
     <div className={classes.container}>
       <Text title={"Welcome"} />
       <div className={classes.fields}>
-        
+
       </div>
       <Button
         style={{ minWidth: 390, marginTop: "4px" }}
@@ -34,7 +31,7 @@ const Login = () => {
         typeVariant={"primary"}
         onClick={handleLogin}
       />
-      
+
     </div>
   );
 };
