@@ -1,5 +1,4 @@
 import { createClient } from 'react-fetching-library';
-
 import { requestHostInterceptor } from './requestHostInterceptor';
 
 
