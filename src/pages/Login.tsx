@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Text from "../components/Text";
-import { useLogin } from "../hooks";
 import { isLogged } from "../services/Auth";
 import Alert from "../components/Alert";
 
@@ -14,50 +13,19 @@ interface Props {
 }
 
 const Login = () => {
-  const [userName, setUser] = useState<string | undefined>();
-  const [password, setPassword] = useState<string | undefined>();
   const classes = useStyles();
   const { push } = useHistory();
-  const { currentUser, login, error: alertError, setError } = useLogin();
+  
+  const handleLogin = () => {
+    push('/');
+  }
 
-  const closeError = useCallback(() => {
-    setError(false);
-  }, [setError]);
-
-  const handleLogin = useCallback(() => {
-    login(userName, password);
-  }, [userName, password, login]);
-
-  useEffect(() => {
-    if (currentUser) {
-      push("/");
-    }
-  }, [currentUser, push]);
-
-  if (isLogged()) push("/");
-
+  
   return (
     <div className={classes.container}>
-      <Text title={"Sign in"} />
+      <Text title={"Welcome"} />
       <div className={classes.fields}>
-        <Input
-          style={{ paddingBottom: "4px" }}
-          typeVariant={"login"}
-          value={userName}
-          placeholder={"User"}
-          onChange={(
-            event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-          ) => setUser(event.target.value)}
-        />
-        <Input
-          type={"password"}
-          placeholder={"Password"}
-          value={password}
-          onChange={(
-            event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-          ) => setPassword(event.target.value)}
-          typeVariant={"login"}
-        />
+        
       </div>
       <Button
         style={{ minWidth: 390, marginTop: "4px" }}
@@ -66,11 +34,7 @@ const Login = () => {
         typeVariant={"primary"}
         onClick={handleLogin}
       />
-       <Alert
-        message="the username or password is incorrect"
-        open={alertError}
-        onClose={closeError}
-      />
+      
     </div>
   );
 };
