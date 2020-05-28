@@ -18,7 +18,7 @@ export const UsersList = ({ users }: Props) => {
 			<div className={classes.list} >
 				<ListLayout>
 					{users.map((user: any) => (
-						<UserItem key={user.id} name={user.name} job={user.job} />
+						<UserItem key={user.id} id={user.id} name={user.name} job={user.job} />
 					))}
 				</ListLayout>
 			</div>

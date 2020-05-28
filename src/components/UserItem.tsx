@@ -1,14 +1,15 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { makeStyles, createStyles } from '@material-ui/styles';
-import Alert from '@material-ui/lab/Alert';
+import React from 'react';
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 
 interface Props {
+    id:number;
     name: string;
     job: string;
 }
 
-export const UserItem = ({ name, job }: Props) => {
+export const UserItem = ({ id, name, job }: Props) => {
     const classes = useStyles()
     return (
         <div className={classes.container}>
@@ -20,7 +21,7 @@ export const UserItem = ({ name, job }: Props) => {
                     {job}
                 </Typography>
             </div>
-            <div onClick={() => console.log( name + ' ' + job)}>X</div>
+            <div onClick={() => console.log( id + ' ' + name + ' ' + job)}><DeleteForeverOutlinedIcon color="primary"/></div>
         </div>
     )
 }
