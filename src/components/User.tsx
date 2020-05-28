@@ -5,6 +5,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React, { useMemo } from "react";
 
+
 interface Props {
   id: number;
   email: string;
@@ -21,22 +22,22 @@ const User = ({ id, firstName, lastName, email, avatar }: Props) => {
   ]);
 
   return (
-    <Card className={classes.card} key={id}>
-      <Avatar
-        alt={fullName}
-        src={avatar}
-        aria-label="recipe"
-        className={classes.avatar}
-      />
-      <CardContent>
-        <Typography variant="h4" color="primary" component="h4">
-          {fullName}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {email}
-        </Typography>
-      </CardContent>
-    </Card>
+      <Card className={classes.card} key={id}>
+        <Avatar
+          alt={fullName}
+          src={avatar}
+          aria-label="recipe"
+          className={classes.avatar}
+        />
+        <CardContent>
+          <Typography variant="h4" color="primary" component="h4">
+            {fullName}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {email}
+          </Typography>
+        </CardContent>
+      </Card>
   );
 };
 

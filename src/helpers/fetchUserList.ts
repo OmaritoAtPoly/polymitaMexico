@@ -11,3 +11,7 @@ export const addUserAction = (formValues: any): Action<any> => ({
   body: formValues,
 });
 
+export const deleteUserAction = (id: number): Action<any> => ({
+  method: 'DELETE',
+  endpoint: '/users?id=' + id
+});
