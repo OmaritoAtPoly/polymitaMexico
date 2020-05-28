@@ -4,12 +4,18 @@ import { useMutation } from 'react-fetching-library';
 import { AddUserForm, UserInput } from '../AddUserForm';
 import Container from '../atoms/Container';
 import { UsersList } from '../components/UserList';
-import { addUserAction } from '../helpers/fetchUserList';
+import { addUserAction, deleteUserAction } from '../helpers/fetchUserList';
 
 
 const CreateUsers = () => {
+	const classes = useStyles()
 	const [users, setUser] = useState<any[]>([])
 	const { loading, payload, mutate, error, reset, abort } = useMutation(addUserAction)
+	const { loading: delLoading, payload: delPayload, mutate: delMutation } = useMutation(deleteUserAction);
+
+	const handleDelete = async (userId: number) => {
+		await mutate(userId);
+	}
 
 	const addUser = async () => {
 		if (payload) {
@@ -24,7 +30,7 @@ const CreateUsers = () => {
 	const handleSubmit = async (formValues: UserInput) => {
 		await mutate(formValues);
 	}
-	const classes = useStyles()
+
 	return (
 		<Container>
 			<div className={classes.row} >
