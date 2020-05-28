@@ -1,6 +1,4 @@
-import { compareSync } from "bcryptjs";
 import { PointOptionsObject } from "highcharts";
-import jwt from "jsonwebtoken";
 import { useMemo, useState } from "react";
 import { Action, useSuspenseQuery } from "react-fetching-library";
 
