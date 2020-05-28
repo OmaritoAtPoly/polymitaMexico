@@ -1,16 +1,25 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import { IconButton, Typography } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 interface Props {
-    id:number;
+
     name: string;
     job: string;
+    id: number;
+    onDelete: (id: number) => void;
 }
 
-export const UserItem = ({ id, name, job }: Props) => {
+export const UserItem = ({ name, job, id, onDelete }: Props) => {
     const classes = useStyles()
+
+    const handleDelete = () => {
+        onDelete(id)
+    }
+
     return (
         <div className={classes.container}>
             <div className={classes.user} >
@@ -21,13 +30,17 @@ export const UserItem = ({ id, name, job }: Props) => {
                     {job}
                 </Typography>
             </div>
-            <div onClick={() => console.log( id + ' ' + name + ' ' + job)}><DeleteForeverOutlinedIcon color="primary"/></div>
+            <IconButton color="primary" component="span" onClick={handleDelete}>
+                <DeleteIcon />
+            </IconButton>
         </div>
     )
 }
 
 const useStyles = makeStyles({
     user: {
+        display: 'flex',
+        justifyContent: 'space-between',
         padding: '.5rem',
         border: '1px solid #ccc',
         margin: '1rem',
