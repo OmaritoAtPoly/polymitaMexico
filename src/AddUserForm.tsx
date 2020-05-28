@@ -3,6 +3,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { Button, TextField, Typography } from '@material-ui/core';
 import * as Yup from 'yup';
+import { useHistory } from 'react-router-dom';
 
 export type UserInput = {
     name: string;
@@ -21,16 +22,17 @@ interface Props {
 
 export const AddUserForm = ({ loading, handleSubmit }: Props) => {
     const classes = useStyles()
+    const { push } = useHistory();
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={Yup.object({
                 name: Yup.string()
                     .max(15, 'Must be 15 characters or less')
-                    .required('This filed is required'),
+                    .required('This field is required'),
                 job: Yup.string()
                     .max(20, 'Must be 20 characters or less')
-                    .required('This filed is required'),
+                    .required('This field is required'),
             })}
             onSubmit={(values, actions) => {
                 handleSubmit(values)
@@ -73,7 +75,7 @@ export const AddUserForm = ({ loading, handleSubmit }: Props) => {
                              </Button>
                         </div>
                     </div>
-
+                    <Button variant="contained" size='small' color="default" className={classes.goBack} onClick={() => push('/')}>Go back</Button>
                 </Form>
             )}
         </Formik>
@@ -93,7 +95,7 @@ const useStyles = makeStyles({
         flexDirection: "column",
         alignItems: 'center',
         width: '80%',
-        height: '20rem',
+        height: '17rem',
         border: '1px solid #ccc',
         padding: '.5rem',
         marginTop: '1rem',
@@ -118,5 +120,9 @@ const useStyles = makeStyles({
         justifyContent: 'flex-end',
         width: 'inherit',
         margin: '.5rem'
+    },
+    goBack: {
+        marginLeft: '212px',
+        marginTop: '10px'
     }
 });
