@@ -8,7 +8,7 @@ export const Header = () => {
   const { push } = useHistory();
 
   const handleOnClick = useCallback(() => {
-    push("/addUsers");
+    push("/add-users");
   }, [push]);
 
   return (
