@@ -15,7 +15,6 @@
     "highcharts": "^8.1.0",
     "highcharts-react-official": "^3.0.0",
     "polished": "^3.6.3",
-    "query-string": "^6.12.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-fetching-library": "^1.7.4",
