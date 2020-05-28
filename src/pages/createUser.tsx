@@ -3,6 +3,7 @@ import { AddUserForm, UserInput } from '../AddUserForm';
 import { useMutation } from 'react-fetching-library';
 import { addUserAction } from '../helpers/fetchUserList';
 import { UserItem } from '../components/UserItem';
+import Container from '../atoms/Container';
 
 
 const CreateUsers = () => {
@@ -23,7 +24,11 @@ const CreateUsers = () => {
                 // setUsers(values);
                 // return <AddUserForm loading={loading} handleSubmit={} />
         }
-        return <UserItem name={'Asio'} job={'Programmer'} />
+        return (
+                <Container>
+                        <UserItem name={'Asio'} job={'Programmer'} />
+                </Container>
+        )
         // if (loading) return <div>loading</div>
         // if (error) return <div>Error</div>
         // if (payload) return <div>{payload.name}</div>

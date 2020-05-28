@@ -23,10 +23,8 @@ export const UserItem = ({ name, job }: Props) => {
 
 const useStyles = makeStyles({
     user: {
-        width: '100%',
-        padding: '1rem',
-        border: '1px solid',
-        borderColor: '#ccc',
+        padding: '.5rem',
+        border: '1px solid #ccc',
         margin: '1rem'
     }
 });
