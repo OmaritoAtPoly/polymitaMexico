@@ -19,6 +19,7 @@ const Users = () => {
     },
     [location.pathname, replace]
   );
+  const { push } = useHistory();
 
   return (
     <>
