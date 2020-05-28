@@ -6,9 +6,10 @@ import { Typography } from '@material-ui/core';
 
 interface Props {
 	users: any[]
+	onUserDelete: (userId: number) => void;
 }
 
-export const UsersList = ({ users }: Props) => {
+export const UsersList = ({ users, onUserDelete }: Props) => {
 	const classes = useStyles()
 	return (
 		<div className={classes.container}>
@@ -18,7 +19,7 @@ export const UsersList = ({ users }: Props) => {
 			<div className={classes.list} >
 				<ListLayout>
 					{users.map((user: any, index: number) => (
-						<UserItem key={index} name={user.name} job={user.job} />
+						<UserItem onDelete={onUserDelete} key={index} name={user.name} job={user.job} id={user.id} />
 					))}
 				</ListLayout>
 			</div>

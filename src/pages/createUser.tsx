@@ -13,18 +13,19 @@ const CreateUsers = () => {
 	const { loading, payload, mutate, error, reset, abort } = useMutation(addUserAction)
 	const { loading: delLoading, payload: delPayload, mutate: delMutation } = useMutation(deleteUserAction);
 
-	const handleDelete = async (userId: number) => {
+	const handleUserDelete = async (userId: number) => {
 		await mutate(userId);
 	}
 
 	const addUser = async () => {
 		if (payload) {
-			setUser([...users, { name: payload.name, job: payload.job }])
+			setUser([...users, { id: payload.name, name: payload.name, job: payload.job }])
 		}
 	}
 
 	useEffect(() => {
 		addUser()
+		console.log(payload)
 	}, [payload]);
 
 	const handleSubmit = async (formValues: UserInput) => {
@@ -34,7 +35,7 @@ const CreateUsers = () => {
 	return (
 		<Container>
 			<div className={classes.row} >
-				<UsersList users={users} />
+				<UsersList users={users} onUserDelete={handleUserDelete} />
 				<AddUserForm loading={loading} handleSubmit={handleSubmit} />
 			</div>
 		</Container>
