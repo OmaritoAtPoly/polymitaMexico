@@ -1,38 +1,50 @@
-import camelcaseKeys from "camelcase-keys";
-import React, { useMemo } from "react";
-import ListLayout from "../components/ListLayout";
-import User from "../components/User";
-import { dataApi } from "../dataApi";
-import { User as UserType } from "../typings";
-import { Button, makeStyles } from "@material-ui/core";
-import { useHistory } from 'react-router-dom'
+import { Theme } from "@material-ui/core";
+import Pagination from "@material-ui/lab/Pagination";
+import { createStyles, makeStyles } from "@material-ui/styles";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
+import Suspense from "../components/Suspense";
+import UsersContainer from "../containers/UsersContainer";
 
 const Users = () => {
-  const classes = useStyles()
-  const dataPrepared = useMemo<UserType[]>(
-    () => dataApi.data.map((item) => camelcaseKeys(item)) as any,
-    []
+  const classes = useStyles();
+  const { location, replace } = useHistory();
+
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<unknown>, value: number) => {
+      replace(
+        `${location.pathname}?page=${value}&per_page=${
+          process.env.REACT_APP_PER_PAGE
+        }`
+      );
+    },
+    [location.pathname, replace]
   );
   const { push } = useHistory();
 
   return (
-    <span>
-      <ListLayout>
-        {dataPrepared.map((data) => (
-          <User key={data.id} {...data} />
-        ))}
-      </ListLayout>
-      <Button variant="contained" size='small' color="default" onClick={() => push('/')} className={classes.goBack}>Go back</Button>
-    </span>
+    <Suspense>
+      <UsersContainer />
+      <div className={classes.root}>
+        <Pagination
+          count={3}
+          variant="outlined"
+          shape="rounded"
+          onChange={handleChange}
+        />
+      </div>
+    </Suspense>
   );
 };
 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      "& > *": {
+        marginTop: theme.spacing(2),
+      },
+    },
+  })
+);
+
 export default Users;
-
-
-const useStyles = makeStyles({
-  goBack:{
-    marginLeft:'60px',
-    marginBottom:'10px'
-  }
-})
