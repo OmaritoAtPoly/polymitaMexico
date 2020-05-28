@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { AddUserForm, UserInput } from '../AddUserForm';
-import { useMutation } from 'react-fetching-library';
-import { addUserAction } from '../helpers/fetchUserList';
-import { UserItem } from '../components/UserItem';
-import Container from '../atoms/Container';
-import ListLayout from '../components/ListLayout';
-import { margin } from 'polished';
-import { UsersList } from '../components/UserList';
 import { makeStyles } from '@material-ui/styles';
+import React, { useEffect, useState } from 'react';
+import { useMutation } from 'react-fetching-library';
+import { AddUserForm, UserInput } from '../AddUserForm';
+import Container from '../atoms/Container';
+import { UsersList } from '../components/UserList';
+import { addUserAction } from '../helpers/fetchUserList';
 
 
 const CreateUsers = () => {
@@ -32,7 +29,7 @@ const CreateUsers = () => {
 		<Container>
 			<div className={classes.row} >
 				<UsersList users={users} />
-				<AddUserForm loading={loading} error={'error'} handleSubmit={handleSubmit} />
+				<AddUserForm loading={loading} handleSubmit={handleSubmit} />
 			</div>
 		</Container>
 	)
