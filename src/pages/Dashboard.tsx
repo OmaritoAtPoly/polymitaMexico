@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import { useMutation } from 'react-fetching-library';
-import { addUserAction } from '../helpers/fetchUserList';
+import { addUserAction } from '../hooks';
 
 const Dashboard = () => {
         const { push } = useHistory();

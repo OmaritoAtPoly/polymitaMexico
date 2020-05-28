@@ -14,3 +14,9 @@ export const fetchUsersAction = (
 export const useQueryUsers = (path: string, search?: string) => {
   return useSuspenseQuery(fetchUsersAction(path, search));
 };
+
+export const addUserAction = (formValues: any): Action<any> => ({
+  method: 'POST',
+  endpoint: '/users',
+  body: formValues,
+});
