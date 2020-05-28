@@ -83,7 +83,7 @@ const useStyles = makeStyles({
         display: "flex",
         flexDirection: "column",
         justifyContent: 'center',
-        maxWidth: '25%',
+        // maxWidth: '25%',
         margin: '5rem auto'
     },
     title: {

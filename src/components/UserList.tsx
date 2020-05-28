@@ -1,16 +1,32 @@
 import React from 'react';
+import ListLayout from './ListLayout';
+import { UserItem } from './UserItem';
+import { makeStyles } from '@material-ui/styles';
 
 interface Props {
-        users: any,
+	users: any[]
 }
 
-const UsersList = ({ users }: Props) => {
-
-        return <div>
-                <span>Nombre: {`${users.first_name} `}  </span>
-                <span>Apellido: {`${users.last_name} `}  </span>
-                <span>Email: {`${users.email} `}  </span>
-        </div>
+export const UsersList = ({ users }: Props) => {
+	const classes = useStyles()
+	return (
+		<div className={classes.container} >
+			<ListLayout>
+				{users.map((user: any, index: number) => (
+					<UserItem key={index} name={user.name} job={user.job} />
+				))}
+			</ListLayout>
+		</div>
+	)
 }
 
-export default UsersList;
+const useStyles = makeStyles({
+	container: {
+		width: '40%',
+		minHeight: '50vp',
+		padding: '.5rem',
+		border: '1px solid #ccc',
+		marginTop: '2rem'
+	}
+});
+
