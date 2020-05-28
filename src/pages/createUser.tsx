@@ -41,6 +41,7 @@ export default CreateUsers;
 
 const useStyles = makeStyles({
 	row: {
-		display: 'flex'
+		display: 'flex',
+		justifyContent: 'center'
 	}
 });
