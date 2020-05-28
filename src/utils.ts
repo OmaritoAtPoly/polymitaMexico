@@ -1,1 +1,4 @@
-export const DateFormat = 'YYYY-MM-DD';
+export const apiPath = process.env.REACT_APP_API || "https://reqres.in/api";
+
+export const getEndPointPath = (path: string, search?: string) =>
+  `${apiPath}/${path}${search}`;

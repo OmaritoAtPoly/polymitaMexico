@@ -19,7 +19,7 @@ const User = ({ id, firstName, lastName, email, avatar }: Props) => {
     firstName,
     lastName,
   ]);
-  console.log({ id, firstName, lastName, email, avatar });
+
   return (
     <Card className={classes.card} key={id}>
       <Avatar

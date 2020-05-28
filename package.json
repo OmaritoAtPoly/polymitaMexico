@@ -22,6 +22,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.25.3",
     "polished": "^3.6.3",
+    "query-string": "^6.12.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-fetching-library": "^1.7.4",
