@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Users from '../pages/Users';
 import { AddUserForm } from '../AddUserForm';
 import Dashboard from '../pages/Dashboard';
+import CreateUsers from '../pages/createUser';
 
 export const Router = () => {
     return (
@@ -11,7 +12,7 @@ export const Router = () => {
             {/* <Route exact path="/" component={Login} /> */}
             <Route exact path="/" component={Dashboard}/>
             <Route path="/users" component={Users} />
-            <Route path="/addUsers" component={AddUserForm} />
+            <Route path="/addUsers" component={CreateUsers} />
         </Switch>
     )
 }

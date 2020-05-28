@@ -1,5 +1,5 @@
 import { PointOptionsObject } from "highcharts";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Action, useSuspenseQuery } from "react-fetching-library";
 
 
