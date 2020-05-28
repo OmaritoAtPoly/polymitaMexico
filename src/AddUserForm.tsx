@@ -39,39 +39,42 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
             }}
         >
             {({ handleChange, handleBlur, values }) => (
-                <Form className={classes.container} >
-                    <Typography className={classes.title} variant="h4" gutterBottom>
+                <Form className={classes.form} >
+                    <Typography variant="h4" color="primary" component="h4">
                         Create User
-                    </Typography>
-                    <div className={classes.formGroup} >
-                        <TextField
-                            className={classes.input}
-                            variant='outlined'
-                            size='small'
-                            label="Name"
-                            onChange={handleChange('name')}
-                            onBlur={handleBlur('name')}
-                            value={values.name}
-                        />
-                        <ErrorMessage name="name" />
+			        </Typography>
+                    <div className={classes.container} >
+                        <div className={classes.formGroup} >
+                            <TextField
+                                className={classes.input}
+                                variant='outlined'
+                                size='small'
+                                label="Name"
+                                onChange={handleChange('name')}
+                                onBlur={handleBlur('name')}
+                                value={values.name}
+                            />
+                            <ErrorMessage name="name" />
+                        </div>
+                        <div className={classes.formGroup} >
+                            <TextField
+                                className={classes.input}
+                                variant='outlined'
+                                size='small'
+                                label="job"
+                                onChange={handleChange('job')}
+                                onBlur={handleBlur('job')}
+                                value={values.job}
+                            />
+                            <ErrorMessage name="job" />
+                        </div>
+                        <div className={classes.submit}  >
+                            <Button disabled={loading} type='submit' variant="contained" size='small' color="primary">
+                                Create
+                             </Button>
+                        </div>
                     </div>
-                    <div className={classes.formGroup} >
-                        <TextField
-                            className={classes.input}
-                            variant='outlined'
-                            size='small'
-                            label="job"
-                            onChange={handleChange('job')}
-                            onBlur={handleBlur('job')}
-                            value={values.job}
-                        />
-                        <ErrorMessage name="job" />
-                    </div>
-                    <div className={classes.submit}  >
-                        <Button disabled={loading} type='submit' variant="contained" size='small' color="primary">
-                            Create
-                        </Button>
-                    </div>
+
                 </Form>
             )}
         </Formik>
@@ -79,12 +82,22 @@ export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
 }
 
 const useStyles = makeStyles({
+    form: {
+        marginTop: '2rem',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: 'center',
+        width: '50%',
+    },
     container: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: 'center',
-        // maxWidth: '25%',
-        margin: '5rem auto'
+        alignItems: 'center',
+        width: '80%',
+        height: '20rem',
+        border: '1px solid #ccc',
+        padding: '.5rem',
+        marginTop: '1rem',
     },
     title: {
         display: 'flex',
