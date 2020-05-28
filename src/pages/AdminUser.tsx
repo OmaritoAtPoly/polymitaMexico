@@ -1,14 +1,11 @@
-import { makeStyles } from '@material-ui/styles';
 import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-fetching-library';
-import { AddUserForm, UserInput } from '../AddUserForm';
-import Container from '../atoms/Container';
-import { UsersList } from '../components/UserList';
+import { UserInput } from '../AddUserForm';
+import { AdminUserView } from '../components/AdminUserView';
 import { addUserAction, deleteUserAction } from '../helpers/fetchUserList';
 
 
-const CreateUsers = () => {
-	const classes = useStyles()
+export const AdminUser = () => {
 	const [users, setUser] = useState<any[]>([])
 	const { loading, payload, mutate, } = useMutation(addUserAction)
 	const { mutate: delMutation } = useMutation(deleteUserAction);
@@ -45,19 +42,11 @@ const CreateUsers = () => {
 	}
 
 	return (
-		<Container>
-			<div className={classes.row} >
-				<UsersList users={users} onUserDelete={handleUserDelete} />
-				<AddUserForm loading={loading} handleSubmit={handleSubmit} />
-			</div>
-		</Container>
+		<AdminUserView
+			createUser={handleSubmit}
+			deleteUser={handleUserDelete}
+			onCreateUserLoading={loading}
+			users={users}
+		/>
 	)
 }
-export default CreateUsers;
-
-const useStyles = makeStyles({
-	row: {
-		display: 'flex',
-		justifyContent: 'center'
-	}
-});
