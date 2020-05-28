@@ -10,11 +10,24 @@ import { addUserAction, deleteUserAction } from '../helpers/fetchUserList';
 const CreateUsers = () => {
 	const classes = useStyles()
 	const [users, setUser] = useState<any[]>([])
-	const { loading, payload, mutate, error, reset, abort } = useMutation(addUserAction)
-	const { loading: delLoading, payload: delPayload, mutate: delMutation } = useMutation(deleteUserAction);
+	const { loading, payload, mutate, } = useMutation(addUserAction)
+	const { mutate: delMutation } = useMutation(deleteUserAction);
 
 	const handleUserDelete = async (userId: number) => {
-		await mutate(userId);
+		await delMutation(userId).then(() => {
+			const index = users.findIndex((user) => compare(user, userId))
+			deleteUser(index)
+		}).catch((err) => err);
+	}
+
+	const deleteUser = (index: number) => {
+		let usersList = [...users]
+		usersList.splice(index, 1)
+		setUser([...usersList])
+	}
+
+	const compare = (user: any, userId: number) => {
+		return (user.id === userId)
 	}
 
 	const addUser = async () => {
@@ -25,7 +38,6 @@ const CreateUsers = () => {
 
 	useEffect(() => {
 		addUser()
-		console.log(payload)
 	}, [payload]);
 
 	const handleSubmit = async (formValues: UserInput) => {
