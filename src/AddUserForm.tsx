@@ -16,11 +16,10 @@ const initialValues = {
 
 interface Props {
     loading: boolean;
-    error: any;
     handleSubmit: (userInput: UserInput) => void
 }
 
-export const AddUserForm = ({ loading, error, handleSubmit }: Props) => {
+export const AddUserForm = ({ loading, handleSubmit }: Props) => {
     const classes = useStyles()
     return (
         <Formik

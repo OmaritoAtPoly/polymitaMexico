@@ -29,7 +29,7 @@ const CreateUsers = () => {
 		<Container>
 			<div className={classes.row} >
 				<UsersList users={users} />
-				<AddUserForm loading={loading} error={'error'} handleSubmit={handleSubmit} />
+				<AddUserForm loading={loading} handleSubmit={handleSubmit} />
 			</div>
 		</Container>
 	)
