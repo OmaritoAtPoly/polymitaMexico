@@ -10,6 +10,7 @@ import { Header } from "../components/Header";
 const Users = () => {
   const classes = useStyles();
   const { location, replace } = useHistory();
+  const { push } = useHistory();
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<unknown>, value: number) => {
@@ -19,11 +20,14 @@ const Users = () => {
     },
     [location.pathname, replace]
   );
-  const { push } = useHistory();
+
+  const handleOnClick = useCallback(() => {
+    push("/admin-users");
+  }, [push]);
 
   return (
     <>
-      <Header />
+      <Header buttonText={"Admin User"} handleOnClick={handleOnClick} />
       <Suspense>
         <UsersContainer />
         <div className={classes.root}>
