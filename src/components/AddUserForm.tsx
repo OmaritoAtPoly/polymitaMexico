@@ -41,7 +41,7 @@ export const AddUserForm = ({ loading, handleSubmit }: Props) => {
     >
       {({ handleChange, handleBlur, values }) => (
         <Form className={classes.form}>
-          <Typography variant="h4" color="primary" component="h4">
+          <Typography variant="h4" color="primary" component="h4" className={classes.label}>
             Create User
           </Typography>
           <div className={classes.container}>
@@ -126,8 +126,7 @@ const useStyles = makeStyles({
     width: "inherit",
     margin: ".5rem",
   },
-  goBack: {
-    marginLeft: "212px",
-    marginTop: "10px",
-  },
+  label: {
+    width: "80%",
+  }
 });

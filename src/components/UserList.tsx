@@ -14,10 +14,10 @@ export const UsersList = ({ users, onUserDelete }: Props) => {
   return (
     <div className={classes.container}>
       <Typography
-        className={classes.title}
         variant="h4"
         color="primary"
         component="h4"
+        className={classes.title}
       >
         User List
       </Typography>
@@ -49,6 +49,7 @@ const useStyles = makeStyles({
     marginTop: "1rem",
   },
   title: {
-    textAlign: "center",
-  },
+    marginLeft: "1rem",
+    marginBottom: "1rem",
+  }
 });
