@@ -24,7 +24,7 @@ const User = (props: Props) => {
     <Card className={classes.card} key={id}>
       <Avatar
         alt={title}
-        // src={avatar}
+        src={avatar}
         aria-label="recipe"
         className={classes.avatar}
       />
