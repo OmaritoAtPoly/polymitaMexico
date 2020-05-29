@@ -1,20 +1,24 @@
-import camelcaseKeys from "camelcase-keys";
 import React, { useCallback, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Alert from "../components/Alert";
 import ListLayout from "../components/ListLayout";
 import User from "../components/User";
 import { useQueryUsers } from "../hooks";
-import { User as UserType } from "../typings";
 
 const UsersContainer = () => {
   const { location } = useHistory();
   const { payload, error } = useQueryUsers("users", location.search);
   const [alertError, setAlertError] = useState(error);
 
-  const dataPrepared = useMemo<UserType[]>(() => {
+  const dataPrepared = useMemo<any[]>(() => {
     const data = !payload || payload.message ? [] : payload.data;
-    return data.map((item: any) => camelcaseKeys(item)) as any;
+    return data.map((item: any) => {
+      return {
+        ...item,
+        title: `${item.first_name} ${item.last_name}`,
+        subTitle: item.email,
+      };
+    }) as any;
   }, [payload]);
 
   const closeError = useCallback(() => {

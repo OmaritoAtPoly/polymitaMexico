@@ -5,3 +5,6 @@ export interface User {
   email: string;
   avatar: string;
 }
+
+export type Variant = "tiny" | "big";
+

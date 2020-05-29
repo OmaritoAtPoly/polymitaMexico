@@ -3,14 +3,18 @@ import { createStyles, makeStyles } from "@material-ui/styles";
 import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
+interface Props {
+  buttonText: string;
+  handleOnClick: () => void;
+}
 
-export const Header = () => {
+export const Header = ({ buttonText, handleOnClick }: Props) => {
   const classes = useStyles();
   const { push } = useHistory();
 
-  const handleOnClick = useCallback(() => {
-    push("/add-users");
-  }, [push]);
+  // const handleOnClick = useCallback(() => {
+  //   push("/admin-users");
+  // }, [push]);
 
   return (
     <AppBar position="static" color="default">
@@ -24,7 +28,7 @@ export const Header = () => {
           color="primary"
           onClick={handleOnClick}
         >
-          Create User
+          {buttonText}
         </Button>
       </Toolbar>
     </AppBar>

@@ -7,7 +7,7 @@ export const Router = () => {
   return (
     <Switch>
       <Route exact path="/" component={Users} />
-      <Route path="/add-users" component={AdminUser} />
+      <Route path="/admin-users" component={AdminUser} />
     </Switch>
   );
 };
