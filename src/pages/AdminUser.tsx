@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from 'react-fetching-library';
 import { UserInput } from '../AddUserForm';
 import { AdminUserView } from '../components/AdminUserView';
-import { addUserAction, deleteUserAction } from '../helpers/fetchUserList';
+import { addUserAction, deleteUserAction } from '../utils';
 
 
 export const AdminUser = () => {

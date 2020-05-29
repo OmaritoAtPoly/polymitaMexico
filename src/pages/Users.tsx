@@ -14,7 +14,7 @@ const Users = () => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<unknown>, value: number) => {
       replace(
-        `${location.pathname}?page=${value}&per_page=${process.env.REACT_APP_PER_PAGE}`
+        `${location.pathname}?page=${value}&per_page=${process.env.REACT_APP_PER_PAGE || 4}`
       );
     },
     [location.pathname, replace]
