@@ -1,7 +1,7 @@
 import React from 'react'
 import { useBulkMutation } from 'react-fetching-library';
 import DeleteUserForm from '../components/DeleteUserForm';
-import { deleteUserAction } from '../helpers/fetchUserList';
+import { deleteUserAction } from '../utils';
 
 export const DeleteUserFormContainer = () => {
 

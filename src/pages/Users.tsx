@@ -5,6 +5,7 @@ import React, { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import Suspense from "../components/Suspense";
 import UsersContainer from "../containers/UsersContainer";
+import { Header } from "../components/Header";
 
 const Users = () => {
   const classes = useStyles();
@@ -13,9 +14,7 @@ const Users = () => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<unknown>, value: number) => {
       replace(
-        `${location.pathname}?page=${value}&per_page=${
-          process.env.REACT_APP_PER_PAGE
-        }`
+        `${location.pathname}?page=${value}&per_page=${process.env.REACT_APP_PER_PAGE || 4}`
       );
     },
     [location.pathname, replace]
@@ -23,17 +22,20 @@ const Users = () => {
   const { push } = useHistory();
 
   return (
-    <Suspense>
-      <UsersContainer />
-      <div className={classes.root}>
-        <Pagination
-          count={3}
-          variant="outlined"
-          shape="rounded"
-          onChange={handleChange}
-        />
-      </div>
-    </Suspense>
+    <>
+      <Header />
+      <Suspense>
+        <UsersContainer />
+        <div className={classes.root}>
+          <Pagination
+            count={3}
+            variant="outlined"
+            shape="rounded"
+            onChange={handleChange}
+          />
+        </div>
+      </Suspense>
+    </>
   );
 };
 
