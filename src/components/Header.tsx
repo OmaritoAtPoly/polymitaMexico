@@ -1,40 +1,44 @@
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import { createStyles, makeStyles } from '@material-ui/styles';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { userLogOut } from '../services/Auth';
+import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import { createStyles, makeStyles } from "@material-ui/styles";
+import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
 
-export const Header = () => {
-    const classes = useStyles();
-
-    return (
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                    Nemesis
-                </Typography>
-                <NavLink to="/login" className={classes.logout}onClick={() => userLogOut()} >
-                    <span onClick={() => userLogOut()}>Logout</span>
-                </NavLink>
-            </Toolbar>
-        </AppBar>
-    )
+interface Props {
+  buttonText: string;
+  handleOnClick: () => void;
 }
 
-const useStyles = makeStyles(() =>
-    createStyles({
-        link: {
-            textDecoration: 'none',
-            color: 'inherit'
-        },
-        title: {
-            flexGrow: 1,
-        },
-        logout:{
-            textDecoration: 'none',
-            color: 'inherit',
-            paddingLeft:20,
-        }
-    }),
-);
+export const Header = ({ buttonText, handleOnClick }: Props) => {
+  const classes = useStyles();
+  const { push } = useHistory();
 
+  // const handleOnClick = useCallback(() => {
+  //   push("/admin-users");
+  // }, [push]);
+
+  return (
+    <AppBar position="static" color="default">
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+          Mexican Test
+        </Typography>
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          onClick={handleOnClick}
+        >
+          {buttonText}
+        </Button>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    title: {
+      flexGrow: 1,
+    },
+  })
+);
